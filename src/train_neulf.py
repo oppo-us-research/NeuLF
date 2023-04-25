@@ -55,7 +55,7 @@ parser.add_argument('--exp_name',type=str, default = 'Ollie_d8_w256',help = 'exp
 parser.add_argument('--data_dir',type=str, 
                     default = 'dataset/Ollie/',help='data folder name')
 parser.add_argument('--batch_size',type=int, default = 8192,help='normalize input')
-parser.add_argument('--test_freq',type=int,default=30,help='test frequency')
+parser.add_argument('--test_freq',type=int,default=10,help='test frequency')
 parser.add_argument('--save_checkpoints',type=int,default=20,help='checkpoint frequency')
 parser.add_argument('--whole_epoch',type=int,default=120,help='checkpoint frequency')
 parser.add_argument('--gpuid',type=str, default = '0',help='data folder name')

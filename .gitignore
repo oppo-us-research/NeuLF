@@ -7,5 +7,5 @@ src/tensorboard/
 demo_result_rgb/
 *.pyc
 *.npy
-dataset/*/images
+dataset/*/images_full
 

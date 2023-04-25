@@ -73,7 +73,7 @@ For each data, to train a `NeuLF`, let take `CanClip` as an example:
 First, we need to convert the data into `UVST`,`rgb_values` and `Renderpose`:
 
 ```
-python src/llffProcess.py --data_dir dataset/CanClip
+python src/llffProcess.py --data_dir dataset/CanClip --factor 4
 ```
 
 After that, you could see `.npy` files in dataset folder.

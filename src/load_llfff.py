@@ -65,15 +65,24 @@ def _load_data(basedir, factor=None, width=None, height=None, load_imgs=True):
     poses = poses_arr[:, :-2].reshape([-1, 3, 5]).transpose([1,2,0])
     bds = poses_arr[:, -2:].transpose([1,0])
     
-    img0 = [os.path.join(basedir, 'images', f) for f in sorted(os.listdir(os.path.join(basedir, 'images'))) \
-            if f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')][0]
-    sh = imageio.imread(img0).shape
+    if not os.path.exists(os.path.join(basedir, 'images_' + f'{factor}')):
+    
+        img0 = [os.path.join(basedir, 'images', f) for f in sorted(os.listdir(os.path.join(basedir, 'images'))) \
+                if f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')][0]
+        
+        sh = imageio.imread(img0).shape
+    else:
+        img0 = [os.path.join(basedir, f'images_{factor}', f) for f in sorted(os.listdir(os.path.join(basedir, f'images_{factor}'))) \
+                if f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')][0]
+        sh = imageio.imread(img0).shape * factor
     
     sfx = ''
     
     if factor is not None:
         sfx = '_{}'.format(factor)
-        _minify(basedir, factors=[factor])
+
+        if not os.path.exists(os.path.join(basedir, 'images' + sfx)):
+            _minify(basedir, factors=[factor])
         factor = factor
     elif height is not None:
         factor = sh[0] / float(height)
