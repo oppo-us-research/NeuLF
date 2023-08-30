@@ -79,12 +79,8 @@ class demo_rgb():
 
         self.color_imgs = np.reshape(self.color_whole,(-1,self.h,self.w,3))
         # input val
-        split = 'val'
-        self.uvst_whole_val   = np.load(f"{data_root}/uvst{split}.npy") 
-        self.color_whole_val   = np.load(f"{data_root}/rgb{split}.npy")
-
-        self.uvst_whole_val = (self.uvst_whole_val - self.uvst_min) / (self.uvst_max - self.uvst_min) * 2 - 1.0
         
+
         self.fdepth = np.load(f"{data_root}/fdepthtrain.npy") # center object
 
         rays_whole = np.concatenate([self.uvst_whole, self.color_whole], axis=1)
@@ -92,8 +88,7 @@ class demo_rgb():
        
         self.uv_depth     = 0.0
         self.st_depth     = -self.fdepth
-        self.plane_dist = self.st_depth - self.uv_depth
-
+       
         # render pose
         self.render_pose  = np.load(f"{data_root}/Render_posetrain.npy")#render path spiral
         self.intrinsic    = np.load(f"{data_root}/ktrain.npy")

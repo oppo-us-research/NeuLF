@@ -46,6 +46,12 @@ You will also need the [LLFF code](http://github.com/fyusion/llff) (and COLMAP) 
 ### Quick demo
 We have a pretrain model on `Ollie` data in `result/Exp_Ollie_d8_w256/checkpoints/`.
 
+To process the raw data, run
+```
+python src/llffProcess.py --data_dir dataset/Ollie --factor 4
+```
+and you will get the `UVST` and `rgb_values` related `.npy` files in `./dataset/Ollie/`.
+
 To visualize our pretrain model on `Ollie` dataset, run
 
 ```
